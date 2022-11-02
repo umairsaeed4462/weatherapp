@@ -3,22 +3,23 @@ let resultBox = document.getElementById('resultBox');
 let temp = document.getElementById('temp');
 let weatherimg = document.getElementById('img');
 
-function fToC(fahrenheit) 
-{
-  const fTemp = fahrenheit;
-  const fToCel = (fTemp - 32) * 5 / 9;
-  
- return fToCel;
+function kelToCel(valNum) {
+    valNum = parseFloat(valNum);
+    return valNum-273.15;
 }
 
 function hide(){
     let elem = document.getElementsByClassName('lower-layer')[0];
+    let elem2 = document.getElementsByClassName('other-info')[0];
     elem.classList.add('none');
+    elem2.classList.add('none');
 }
-
+hide();
 function show(){
     let elem = document.getElementsByClassName('lower-layer')[0];
+    let elem2 = document.getElementsByClassName('other-info')[0];
     elem.classList.remove('none');
+    elem2.classList.remove('none');
 }
 
 document.getElementById('srch-btn').addEventListener('click',async(e)=>{
@@ -37,10 +38,15 @@ document.getElementById('srch-btn').addEventListener('click',async(e)=>{
          else{
             show();
             inputbox.value=''
-            // let temperature = fToC(data.main.temp);
-            let temperature = data.main.temp;
+            let status = data.weather[0].description;
+            let wind = data.wind.speed;
+            let humidity = data.main.humidity;
+            let temperature = Math.round(kelToCel(data.main.temp));
             resultBox.innerHTML = `${data.name},${data.sys.country}`;
             temp.innerHTML = `${temperature} <sup>o</sup>C `;
+            document.getElementById('status').innerHTML = status;
+            document.getElementById('wind').innerHTML = `${wind}m/s`;
+            document.getElementById('humidity').innerHTML = `${humidity}%`;
 
             switch (data.weather[0].main) {
                 case "Clear":

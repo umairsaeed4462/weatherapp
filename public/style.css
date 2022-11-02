@@ -184,7 +184,7 @@ footer p span{
     margin: auto;
     margin-top: 2rem;
     width: 40rem;
-    min-height: 20rem;
+    min-height: 30rem;
     background-color: #323544;
     font-family: "Roboto", sans-serif;
     border-radius: 1rem;
@@ -224,6 +224,24 @@ footer p span{
 .lower-layer i{
    font-size: 6rem;
    color: #fff;
+}
+
+
+.other-info{
+    /* background-color: #fff; */
+    /* background-color: #323544; */
+    padding: 1rem 1.5rem;
+}
+
+.other-info p{
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 2px 0;
+}
+
+.other-info p span{
+    color: var(--main-color);
+
 }
 
 
